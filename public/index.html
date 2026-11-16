@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173b35" />
+    <title>Savor — Your smarter kitchen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="Savor home"><span class="brand-mark">S</span><span>SAVOR</span></a>
+        <nav aria-label="Primary navigation">
+          <a class="active" href="#discover">Discover</a>
+          <a href="#planner">Planner</a>
+          <a href="#saved">Saved <span id="savedCount" class="count">0</span></a>
+        </nav>
+        <button class="profile" title="Your profile" aria-label="Your profile">MK</button>
+      </header>
+
+      <main id="home">
+        <section class="hero" id="discover">
+          <div class="hero-copy">
+            <p class="eyebrow">YOUR KITCHEN, EVOLVED</p>
+            <h1>Make something<br /><em>deliciously</em> yours.</h1>
+            <p class="hero-text">Recipes that meet you where you are — with the ingredients you have, the time you’ve got, and a little help from AI.</p>
+            <div class="hero-actions">
+              <button class="button button-light" data-scroll="chef">Ask AI Chef <span>↗</span></button>
+              <button class="text-button" data-scroll="recipes">Explore recipes <span>↓</span></button>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Bowl of colorful roasted vegetables">
+            <div class="sun"></div><div class="plate"><div class="food food-a"></div><div class="food food-b"></div><div class="food food-c"></div><div class="food food-d"></div><div class="herb"></div></div>
+            <span class="art-label">Simple food,<br />bold flavor.</span>
+          </div>
+          <div class="hero-stats"><div><strong>2.4k</strong><span>recipes</span></div><div><strong>15 min</strong><span>avg. cook time</span></div><div><strong>4.9/5</strong><span>home-cook rated</span></div></div>
+        </section>
+
+        <section class="pantry-strip" id="planner">
+          <div><p class="eyebrow">WHAT'S ON HAND?</p><h2>Turn your pantry into dinner.</h2></div>
+          <form id="pantryForm" class="pantry-form">
+            <label class="sr-only" for="pantryInput">Add a pantry ingredient</label>
+            <input id="pantryInput" placeholder="Add an ingredient…" autocomplete="off" />
+            <button class="round-button" type="submit" aria-label="Add ingredient">+</button>
+            <div id="pantryTags" class="pantry-tags" aria-live="polite"></div>
+          </form>
+          <button id="cookPantry" class="button button-dark">Cook with this <span>→</span></button>
+        </section>
+
+        <section class="recipes-section" id="recipes">
+          <div class="section-heading"><div><p class="eyebrow">TODAY'S PICKS</p><h2>Made for your mood.</h2></div><button class="text-button" id="showAll">View all recipes <span>→</span></button></div>
+          <div class="filters" role="group" aria-label="Recipe filters">
+            <button class="filter active" data-filter="all">All recipes</button><button class="filter" data-filter="quick">Under 20 min</button><button class="filter" data-filter="vegetarian">Vegetarian</button><button class="filter" data-filter="comfort">Comfort food</button>
+          </div>
+          <div id="recipeGrid" class="recipe-grid"></div>
+        </section>
+
+        <section class="chef-section" id="chef">
+          <div class="chef-intro"><p class="eyebrow">MEET YOUR SOUS-CHEF</p><h2>Stuck? Ask<br /><em>anything.</em></h2><p>Tell the AI chef what you’re craving, what needs using up, or simply ask for a new idea.</p><div class="suggestions"><button data-prompt="Create a comforting vegetarian dinner in 30 minutes.">Comfort dinner</button><button data-prompt="What can I make with chicken, lemon, and rice?">Use my pantry</button><button data-prompt="Give me a healthy lunch I can meal prep.">Meal prep</button></div></div>
+          <div class="chef-console">
+            <div class="console-top"><span class="pulse"></span><span>AI CHEF <span class="muted">/ ONLINE</span></span><button id="clearChat" title="Clear chat">↻</button></div>
+            <div id="chatLog" class="chat-log" aria-live="polite"><div class="message assistant"><span class="message-icon">✦</span><p>Hi, I’m your AI chef. What are we making today?</p></div></div>
+            <form id="chefForm" class="chef-form"><label class="sr-only" for="chefInput">Ask the AI chef</label><textarea id="chefInput" rows="1" placeholder="Ask for a recipe or cooking advice…"></textarea><button id="sendButton" class="send-button" type="submit" aria-label="Send message">↑</button></form>
+            <p class="console-note">AI can make mistakes. Check allergens and food safety guidance.</p>
+          </div>
+        </section>
+
+        <section id="saved" class="saved-section"><div class="section-heading"><div><p class="eyebrow">YOUR COLLECTION</p><h2>Saved for later.</h2></div></div><div id="savedEmpty" class="saved-empty">Tap the heart on any recipe to build your personal cookbook.</div><div id="savedGrid" class="recipe-grid"></div></section>
+      </main>
+      <footer><a class="brand" href="#home"><span class="brand-mark">S</span><span>SAVOR</span></a><p>Cook more. Waste less. Enjoy it all.</p><span>© 2026 Savor Kitchen</span></footer>
+    </div>
+    <template id="recipeTemplate"><article class="recipe-card"><div class="recipe-image"><span class="recipe-emoji"></span><span class="image-shadow"></span><button class="save-button" aria-label="Save recipe">♡</button><span class="tag"></span></div><div class="recipe-info"><div class="recipe-meta"><span class="time"></span><span class="dot">•</span><span class="type"></span></div><h3></h3><p></p><div class="recipe-bottom"><span class="author"></span><button class="view-recipe">View recipe <span>→</span></button></div></div></article></template>
+    <script src="app.js"></script>
+  </body>
+</html>
