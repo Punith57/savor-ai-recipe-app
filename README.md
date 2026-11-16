@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Savor — AI Recipe Studio
 
 A polished, responsive recipe discovery app with a pantry helper, favorites, recipe filters, and an OpenAI-powered cooking assistant.
@@ -46,3 +47,6 @@ public/styles.css    Responsive visual design
 public/app.js        Browser interactions and state
 server.js            Static server and secure OpenAI proxy
 ```
+=======
+# savor-ai-recipe-app
+>>>>>>> 46fef18e33dd0b2bef48825c79421cf6f7513081
